@@ -1,7 +1,7 @@
-import './assets/main.css'
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+// if you just want to import css
+import 'tdesign-vue-next/es/style/index.css'
 
 import App from './App.vue'
 import router from './router'

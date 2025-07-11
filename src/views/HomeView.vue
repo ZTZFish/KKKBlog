@@ -1,9 +1,196 @@
-<script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+
+const animationTriggered = ref(false);
+
+onMounted(() => {
+  // 延迟触发动画，确保页面加载完成
+  setTimeout(() => {
+    animationTriggered.value = true;
+  }, 100);
+});
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
+  <header class="navbar">
+    <div class="logo">
+      <img src="../assets/images/Logo.png" alt="logo">
+    </div>
+    <div class="menu">
+      <t-button ghost variant="text">首页</t-button>
+      <t-button ghost variant="text">文章</t-button>
+      <t-button ghost variant="text">关于</t-button>
+      <t-button ghost variant="text">登录</t-button>
+    </div>
+  </header>
+  <main class="home">
+    <div class="content" :class="{ 'slide-in': animationTriggered }">
+      <div class="introduce">
+        <!-- 为每个span添加不同的延迟类 -->
+        <span class="line line-1">你好，我是</span>
+        <span class="line line-2 name">KKK</span>
+        <span class="line line-3">一个喜欢写作和发呆的菜鸟前端</span>
+        <div class="line line-4">
+          <t-button variant="outline" ghost>进入首页</t-button>
+          <t-button shape="circle" variant="outline" ghost>
+            <template #icon><t-icon name="logo-github" /></template>
+          </t-button>
+          <t-button shape="circle" variant="outline" ghost>
+            <template #icon><t-icon name="logo-qq" /></template>
+          </t-button>
+          <t-button shape="circle" variant="outline" ghost>
+            <template #icon><t-icon name="logo-wechat-stroke" /></template>
+          </t-button>
+          <t-button shape="circle" variant="outline" ghost>
+            <template #icon><t-icon name="mail" /></template>
+          </t-button>
+        </div>
+      </div>
+    </div>
   </main>
 </template>
+
+<style lang="scss" scoped>
+header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8vh;
+  font-size: 20px;
+  z-index: 999;
+  animation: fadeIn 3s ease forwards;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-left: 2em;
+    width: 8vh;
+    height: 8vh;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 2em;
+    gap: 1em;
+
+    :deep(.t-button) {
+      font-size: 1em;
+    }
+  }
+}
+
+.home {
+  height: 100vh;
+  background: url(../assets/images/HomeBck.jpg) no-repeat center center fixed;
+  background-size: cover;
+
+  .content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 80vw;
+    height: 100%;
+    margin-left: 10vw;
+    z-index: 1;
+  }
+
+  .introduce {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    font-size: 30px;
+    color: #fff;
+
+    .line {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .line-1 {
+      animation-delay: 0.2s;
+    }
+
+    .line-2 {
+      animation-delay: 0.4s;
+    }
+
+    .line-3 {
+      animation-delay: 0.6s;
+    }
+
+    .line-4 {
+      animation-delay: 0.8s;
+      margin-top: 1em;
+      display: flex;
+      align-items: center;
+      gap: 1em;
+    }
+
+    span {
+      font-size: 2em;
+      font-weight: 700;
+    }
+
+    .name {
+      font-size: 3em;
+      color: #0052d9;
+    }
+  }
+}
+
+//媒体查询
+@media (max-width: 1050px) {
+  .home .content .introduce {
+    font-size: 24px;
+  }
+
+  header {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 840px) {
+  .home .content .introduce {
+    font-size: 20px;
+  }
+
+  header {
+    font-size: 14px;
+  }
+
+}
+
+// 定义动画
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+</style>
