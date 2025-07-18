@@ -4,8 +4,9 @@ import swipperImg2 from '@/assets/images/photos/swipperList2.jpg'
 import swipperImg3 from '@/assets/images/photos/swipperList3.jpg'
 import HeadMenu from '@/components/HeadMenu.vue'
 import ChangeAnimation from '@/components/ChangeAnimation.vue'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useImages } from '@/composables/useImages'
+import ImagePreview from '@/components/ImageView.vue'
 
 const { images: photos, loading } = useImages('all')
 const swipperList = ref([
@@ -22,6 +23,26 @@ const swipperList = ref([
     url: swipperImg3,
   },
 ])
+
+// 预览相关状态
+const previewVisible = ref(false);
+const previewIndex = ref(0);
+
+// 合并轮播图和照片列表作为所有图片
+const allImages = computed(() => {
+  return [...swipperList.value, ...photos.value];
+});
+
+// 打开预览的方法
+const openPreview = (index: number, from: 'swipper' | 'photos') => {
+  // 根据来源计算正确的索引
+  if (from === 'swipper') {
+    previewIndex.value = index;
+  } else {
+    previewIndex.value = swipperList.value.length + index;
+  }
+  previewVisible.value = true;
+};
 </script>
 
 <template>
@@ -34,18 +55,19 @@ const swipperList = ref([
     <div class="swipper-content">
       <div class="swipper">
         <t-swiper class="tdesign-demo-block--swiper" :duration="300" :interval="2000">
-          <t-swiper-item v-for="item in swipperList" :key="item.id">
-            <div class="demo-item">
-              <img :src="item.url" alt="">
-            </div>
+          <t-swiper-item v-for="(item, index) in swipperList" :key="item.id" @click="openPreview(index, 'swipper')">
+            <img :src="item.url" alt="">
           </t-swiper-item>
         </t-swiper>
       </div>
     </div>
-    <div class="photos" v-for="item in photos" :key="item.id">
+    <div class="photos" v-for="(item, index) in photos" :key="item.id" @click="openPreview(index, 'photos')">
       <img :src="item.url" alt="">
     </div>
   </main>
+  <!-- 图片预览组件 -->
+  <ImagePreview :visible="previewVisible" :images="allImages" :current-index="previewIndex"
+    @close="previewVisible = false" @update:currentIndex="(index) => previewIndex = index" />
 </template>
 
 <style lang="scss" scoped>
@@ -69,9 +91,10 @@ main {
   position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  height: calc(100vh - 56px);
+  min-height: calc(100vh - 56px);
+  margin-bottom: 5vh;
   padding: 0 5%;
-  gap: 1.5em;
+  gap: 2em;
 
   /* 确保模糊背景不会超出main元素 */
   .swipper-content {
@@ -86,38 +109,40 @@ main {
       border: 2px solid rgba(255, 255, 255, 0.18);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 
-
-      .demo-item {
+      img {
+        width: 100%;
         height: 100%;
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
+        object-fit: cover;
       }
     }
   }
+}
 
-  .photos {
-    height: 100%;
+.photos {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  border: 10px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+
+  img {
     width: 100%;
-    box-sizing: border-box;
-    border: 2px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    &:first-child {
-      margin-top: 10vh;
-    }
+    height: 100%;
+    object-fit: cover;
   }
 
+  &:first-child {
+    margin-top: 10vh;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
+
+
 
 main::before {
   content: "";

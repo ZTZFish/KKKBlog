@@ -11,6 +11,7 @@ declare module 'vue' {
     AsideMenu: typeof import('./src/components/AsideMenu.vue')['default']
     ChangeAnimation: typeof import('./src/components/ChangeAnimation.vue')['default']
     HeadMenu: typeof import('./src/components/HeadMenu.vue')['default']
+    ImageView: typeof import('./src/components/ImageView.vue')['default']
     LayoutTest: typeof import('./src/components/LayoutTest.vue')['default']
     LoadingAnimation: typeof import('./src/components/LoadingAnimation.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
