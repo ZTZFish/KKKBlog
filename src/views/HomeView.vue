@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
+import router from '@/router';
 
 const animationTriggered = ref(false);
+
 
 onMounted(() => {
   // 延迟触发动画，确保页面加载完成
@@ -9,6 +11,10 @@ onMounted(() => {
     animationTriggered.value = true;
   }, 100);
 });
+
+const enterIndex = () => {
+  router.push({ name: 'index' });
+};
 </script>
 
 <template>
@@ -31,12 +37,9 @@ onMounted(() => {
         <span class="line line-2 name">KKK</span>
         <span class="line line-3">一个喜欢写作和发呆的菜鸟前端</span>
         <div class="line line-4">
-          <t-button variant="outline" ghost>进入首页</t-button>
+          <t-button variant="outline" ghost @click="enterIndex">进入首页</t-button>
           <t-button shape="circle" variant="outline" ghost>
             <template #icon><t-icon name="logo-github" /></template>
-          </t-button>
-          <t-button shape="circle" variant="outline" ghost>
-            <template #icon><t-icon name="logo-qq" /></template>
           </t-button>
           <t-button shape="circle" variant="outline" ghost>
             <template #icon><t-icon name="logo-wechat-stroke" /></template>
@@ -149,8 +152,18 @@ header {
   }
 }
 
+.home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 //媒体查询
-@media (max-width: 1050px) {
+@media (max-width: 1024px) {
   .home .content .introduce {
     font-size: 24px;
   }
@@ -160,7 +173,7 @@ header {
   }
 }
 
-@media (max-width: 840px) {
+@media (max-width: 768px) {
   .home .content .introduce {
     font-size: 20px;
   }

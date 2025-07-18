@@ -8,11 +8,32 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AsideMenu: typeof import('./src/components/AsideMenu.vue')['default']
+    ChangeAnimation: typeof import('./src/components/ChangeAnimation.vue')['default']
+    HeadMenu: typeof import('./src/components/HeadMenu.vue')['default']
+    LayoutTest: typeof import('./src/components/LayoutTest.vue')['default']
+    LoadingAnimation: typeof import('./src/components/LoadingAnimation.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TAside: typeof import('tdesign-vue-next')['Aside']
     TButton: typeof import('tdesign-vue-next')['Button']
+    TContent: typeof import('tdesign-vue-next')['Content']
+    TDivider: typeof import('tdesign-vue-next')['Divider']
+    TDrawer: typeof import('tdesign-vue-next')['Drawer']
+    TFooter: typeof import('tdesign-vue-next')['Footer']
+    THeader: typeof import('tdesign-vue-next')['Header']
     THeadMenu: typeof import('tdesign-vue-next')['HeadMenu']
     TIcon: typeof import('tdesign-vue-next')['Icon']
+    TLayout: typeof import('tdesign-vue-next')['Layout']
+    TLoading: typeof import('tdesign-vue-next')['Loading']
+    TMenu: typeof import('tdesign-vue-next')['Menu']
     TMenuItem: typeof import('tdesign-vue-next')['MenuItem']
+    TSubmenu: typeof import('tdesign-vue-next')['Submenu']
+    TSwiper: typeof import('tdesign-vue-next')['Swiper']
+    TSwiperItem: typeof import('tdesign-vue-next')['SwiperItem']
+    TTabPanel: typeof import('tdesign-vue-next')['TabPanel']
+    TTabs: typeof import('tdesign-vue-next')['Tabs']
+    User: typeof import('./src/components/User.vue')['default']
+    UserInfo: typeof import('./src/components/UserInfo.vue')['default']
   }
 }
