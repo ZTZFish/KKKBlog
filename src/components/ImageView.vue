@@ -1,5 +1,6 @@
-<template>
-  <div v-if="visible" class="image-preview-overlay" @click="close">
+<template><!-- 新增：触摸开始 -->
+  <div v-if="visible" class="image-preview-overlay" @click="close" @touchstart="handleTouchStart"
+    @touchmove="handleTouchMove" @touchend="handleTouchEnd">
     <!-- 关闭按钮 -->
     <button class="preview-close" @click="close">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -62,7 +63,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, onUnmounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
 
 // 定义图片类型接口
 interface ImageItem {
@@ -129,7 +130,7 @@ const zoomOut = () => {
   }
 };
 
-// 键盘事件处理
+// 监听键盘事件
 const handleKeydown = (e: KeyboardEvent) => {
   if (!props.visible) return;
 
@@ -156,12 +157,93 @@ const handleKeydown = (e: KeyboardEvent) => {
   }
 };
 
-// 监听键盘事件
-window.addEventListener('keydown', handleKeydown);
+// 新增：处理滚轮事件（缩放图片并阻止页面滚动）
+const handleWheel = (e: WheelEvent) => {
+  if (!props.visible) return;
+  e.preventDefault(); // 阻止页面滚动
 
-// 组件卸载时移除事件监听
+  // 滚轮缩放逻辑
+  if (e.deltaY < 0 && scale.value < maxScale) {
+    scale.value += 0.1;
+  } else if (e.deltaY > 0 && scale.value > minScale) {
+    scale.value -= 0.1;
+  }
+};
+
+// 监听props.visible变化，控制滚动条
+watch(() => props.visible, (newVal) => {
+  toggleBodyScroll(newVal);
+});
+
+// 控制页面滚动条显示/隐藏
+const toggleBodyScroll = (disable: boolean) => {
+  if (disable) {
+    // 隐藏滚动条但保留布局空间
+    document.body.style.overflow = 'hidden';
+  } else {
+    // 恢复滚动条
+    document.body.style.overflow = '';
+  }
+};
+
+// 触摸相关变量（用于判断滑动方向和是否需要阻止默认行为）
+const touchStartX = ref(0);
+const touchStartY = ref(0);
+const isDragging = ref(false);
+
+// 触摸开始
+const handleTouchStart = (e: TouchEvent) => {
+  if (!props.visible) return;
+  // 记录初始触摸位置
+  touchStartX.value = e.touches[0].clientX;
+  touchStartY.value = e.touches[0].clientY;
+  isDragging.value = false;
+};
+
+// 触摸移动
+const handleTouchMove = (e: TouchEvent) => {
+  if (!props.visible) return;
+
+  // 标记为正在拖动
+  isDragging.value = true;
+
+  // 阻止默认行为（核心：避免滑动遮罩层时页面滚动）
+  e.preventDefault();
+};
+
+// 触摸结束（可选：判断滑动方向，实现左右滑动切换图片）
+const handleTouchEnd = (e: TouchEvent) => {
+  if (!props.visible || !isDragging.value) return;
+
+  // 计算滑动距离
+  const touchEndX = e.changedTouches[0].clientX;
+  const touchEndY = e.changedTouches[0].clientY;
+  const diffX = touchEndX - touchStartX.value;
+  const diffY = touchEndY - touchStartY.value;
+
+  // 横向滑动距离大于纵向，且超过阈值（如30px），则切换图片
+  if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+    if (diffX > 0) {
+      // 向右滑动，切换到上一张
+      prevImage();
+    } else {
+      // 向左滑动，切换到下一张
+      nextImage();
+    }
+  }
+};
+
+// 挂载时添加事件监听
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown);
+  window.addEventListener('wheel', handleWheel, { passive: false }); // 关键：添加滚轮监听
+});
+
+// 卸载时移除事件监听
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeydown);
+  window.removeEventListener('wheel', handleWheel); // 移除滚轮监听
+  toggleBodyScroll(false);
 });
 </script>
 

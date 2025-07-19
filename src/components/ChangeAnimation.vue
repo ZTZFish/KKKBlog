@@ -16,7 +16,7 @@ const loading = ref(true);
 onMounted(() => {
   setTimeout(() => {
     loading.value = false; // 3秒后开始淡出
-  }, 2000);
+  }, 1500);
 });
 </script>
 

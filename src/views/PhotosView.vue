@@ -95,6 +95,14 @@ main {
   margin-bottom: 5vh;
   padding: 0 5%;
   gap: 2em;
+  /* 禁用用户选择文本 */
+  user-select: none;
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE/Edge */
 
   /* 确保模糊背景不会超出main元素 */
   .swipper-content {
@@ -113,6 +121,7 @@ main {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        cursor: pointer;
       }
     }
   }
@@ -126,6 +135,7 @@ main {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   transition: transform 0.3s ease;
+  cursor: pointer;
 
   img {
     width: 100%;
