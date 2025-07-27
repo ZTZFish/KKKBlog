@@ -1,6 +1,6 @@
 <template><!-- 新增：触摸开始 -->
-  <div v-if="visible" class="image-preview-overlay" @click="close" @touchstart="handleTouchStart"
-    @touchmove="handleTouchMove" @touchend="handleTouchEnd">
+  <div v-if="visible" class="image-preview-overlay" @touchstart="handleTouchStart" @touchmove="handleTouchMove"
+    @touchend="handleTouchEnd">
     <!-- 关闭按钮 -->
     <button class="preview-close" @click="close">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -263,6 +263,14 @@ onUnmounted(() => {
   color: white;
   opacity: 1;
   transition: opacity 0.3s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE/Edge */
+
 
   // 关闭按钮
   .preview-close {

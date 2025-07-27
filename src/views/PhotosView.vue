@@ -8,7 +8,7 @@ import { ref, computed } from 'vue'
 import { useImages } from '@/composables/useImages'
 import ImagePreview from '@/components/ImageView.vue'
 
-const { images: photos, loading } = useImages('all')
+const { images: photos, loading } = useImages('PhotosView')
 const swipperList = ref([
   {
     id: 1,
@@ -92,6 +92,7 @@ main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   min-height: calc(100vh - 56px);
+  margin-top: 10vh;
   margin-bottom: 5vh;
   padding: 0 5%;
   gap: 2em;
@@ -187,7 +188,7 @@ main::before {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
   main {
     grid-template-columns: repeat(1, 1fr);
   }

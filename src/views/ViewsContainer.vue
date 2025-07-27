@@ -24,21 +24,30 @@ import HeadMenu from '@/components/HeadMenu.vue'
   grid-template-columns: 1fr 7fr 3fr;
   background-color: #f5f5f5;
   height: 100vh;
+  margin-top: 56px;
 
 
 
   .main {
     grid-area: main;
-    margin-left: 5%;
+    padding: 0 2vw;
     background-color: #fff;
   }
 
   .user {
+    position: fixed;
+    width: 22%;
+    top: 5vh;
+    right: 3%;
     grid-area: user;
   }
 }
 
 @media(max-width:1024px) {
+  html {
+    font-size: 14px;
+  }
+
   .view {
     grid-template-areas: 'none main user';
     grid-template-columns: 1fr 7fr 3fr;
@@ -49,13 +58,14 @@ import HeadMenu from '@/components/HeadMenu.vue'
   }
 }
 
-@media(max-width:798px) {
+@media(max-width:768px) {
   .view {
     grid-template-areas: 'main';
     grid-template-columns: 1fr;
 
     .main {
       margin-left: 0;
+      padding: 0 5vw;
     }
 
     .user {

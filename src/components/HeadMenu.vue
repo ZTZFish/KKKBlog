@@ -11,8 +11,6 @@
       </div>
       <div class="menu-item" :class="{ 'located': isActive('hobbies') }" @click="router.push({ name: 'hobbies' })">爱好
       </div>
-      <div class="menu-item" :class="{ 'located': isActive('messages') }" @click="router.push({ name: 'messages' })">留言
-      </div>
       <div class="menu-item" :class="{ 'located': isActive('resource') }" @click="router.push({ name: 'resource' })">资源
       </div>
     </div>
@@ -35,8 +33,6 @@
       </div>
       <div class="draw-menu-item" :class="{ 'located': isActive('hobbies') }" @click="router.push({ name: 'hobbies' })">
         爱好</div>
-      <div class="draw-menu-item" :class="{ 'located': isActive('messages') }"
-        @click="router.push({ name: 'messages' })">留言</div>
       <div class="draw-menu-item" :class="{ 'located': isActive('resource') }"
         @click="router.push({ name: 'resource' })">资源</div>
     </div>
@@ -82,6 +78,12 @@ const showMenu = () => {
 }
 
 .head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+
   .logo {
     display: flex;
     align-items: center;
@@ -117,7 +119,7 @@ const showMenu = () => {
       height: 100%;
       box-sizing: border-box;
       margin: 0 1em;
-      font-size: 1.2em;
+      font-size: 1.2rem;
       cursor: pointer;
 
       &.located {
@@ -182,7 +184,7 @@ const showMenu = () => {
   }
 }
 
-@media(max-width: 798px) {
+@media(max-width: 768px) {
   .head {
     font-size: 14px;
   }

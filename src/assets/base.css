@@ -36,6 +36,12 @@
   --section-gap: 160px;
 }
 
+/* 修改字体 */
+:root {
+  --td-font-family: 'LXGW WenKai', PingFang SC, Microsoft YaHei, Arial Regular;
+  --td-font-family-medium: 'LXGW WenKai', PingFang SC, Microsoft YaHei, Arial Medium;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --color-background: var(--vt-c-black);
@@ -57,7 +63,13 @@
   margin: 0;
   font-weight: normal;
 }
-
+/* 引入字体 */
+@font-face {
+  font-family: 'LXGW WenKai';
+  src: url('/fonts/LXGWWenKai-Light.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
 body {
   min-height: 100vh;
   color: var(--color-text);
@@ -66,7 +78,7 @@ body {
     background-color 0.5s;
   line-height: 1.6;
   font-family:
-    Inter,
+    'LXGW WenKai',
     -apple-system,
     BlinkMacSystemFont,
     'Segoe UI',
@@ -78,8 +90,22 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
-  font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+@media (max-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media (max-width: 576px) {
+  html {
+    font-size: 12px;
+  }
 }
