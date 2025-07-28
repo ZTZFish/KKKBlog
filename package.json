@@ -13,15 +13,18 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@giscus/vue": "^3.1.1",
     "gsap": "^3.13.0",
+    "highlight.js": "^11.11.1",
+    "markdown-it": "^14.1.0",
     "pinia": "^3.0.3",
     "tdesign-vue-next": "^1.14.2",
-    "vite-plugin-md": "^0.21.5",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.2",
+    "@types/markdown-it": "^14.1.2",
     "@types/node": "^22.15.32",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vitejs/plugin-vue-jsx": "^5.0.0",

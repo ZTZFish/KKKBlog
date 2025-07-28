@@ -20,9 +20,9 @@ const router = createRouter({
       component: () => import('../views/PhotosView.vue'),
     },
     {
-      path: '/article',
-      name: 'article',
-      component: () => import('../views/ArticleView.vue'),
+      path: '/essay',
+      name: 'essay',
+      component: () => import('../views/EssayView.vue'),
     },
     {
       path: '/hobbies',
@@ -33,6 +33,11 @@ const router = createRouter({
       path: '/resource',
       name: 'resource',
       component: () => import('../views/ResourceView.vue'),
+    },
+    {
+      path: '/essayDetail/:essayTitle',
+      name: 'essayDetail',
+      component: () => import('../views/EssayDetail.vue'),
     },
   ],
 })

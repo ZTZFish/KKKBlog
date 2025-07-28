@@ -23,10 +23,8 @@ import HeadMenu from '@/components/HeadMenu.vue'
   grid-template-areas: 'none main user';
   grid-template-columns: 1fr 7fr 3fr;
   background-color: #f5f5f5;
-  height: 100vh;
+  min-height: 100vh;
   margin-top: 56px;
-
-
 
   .main {
     grid-area: main;

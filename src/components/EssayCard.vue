@@ -1,5 +1,8 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 // 定义允许的标签类型
 type EssayTag = 'Vue' | 'HTML' | 'CSS' | 'JS' | string;
@@ -26,10 +29,28 @@ const tagColor = computed(() => {
 
 // 在组件顶层定义 ref
 const card = ref<HTMLDivElement | null>(null)
+
+const enterEssayDetail = () => {
+  router.push({
+    name: 'essayDetail',
+    params: {
+      essayTitle: props.essay.title
+    }
+  })
+}
+
 </script>
 
+const enterEssayDetail = () => {
+router.push({
+path: '/essayDetail',
+query: {
+id: props.essay.id
+}
+})
+}
 <template>
-  <div class="card-container">
+  <div class="card-container" @click="enterEssayDetail">
     <div class="card" ref="card">
       <div class="front"
         :style="{ backgroundImage: `url(${props.essay.bgc})`, backgroundSize: 'cover', backgroundPosition: 'center' }">
@@ -44,7 +65,7 @@ const card = ref<HTMLDivElement | null>(null)
           </div>
           <div class="tags">
             <t-tag v-for="tag in props.essay.tags" :key="tag" style="margin-right: 5px;" :color="tagColor(tag)">{{ tag
-            }}</t-tag>
+              }}</t-tag>
           </div>
         </header>
         <div class="content">

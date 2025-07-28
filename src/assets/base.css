@@ -66,12 +66,27 @@
 /* 引入字体 */
 @font-face {
   font-family: 'LXGW WenKai';
-  src: url('/fonts/LXGWWenKai-Light.ttf') format('truetype');
+  src: url('/fonts/LXGWWenKai-Light.ttf');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LXGW WenKai';
+  src: url('/fonts/LXGWWenKai-Regular.ttf');
   font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LXGW WenKai';
+  src: url('/fonts/LXGWZhenKaiSlabGB-Regular.ttf');
+  font-weight: 700;
   font-display: swap;
 }
 body {
   min-height: 100vh;
+  font-weight: 300;
   color: var(--color-text);
   transition:
     color 0.5s,
@@ -94,18 +109,24 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+strong {
+  font-weight: 700; /* 粗体使用 Medium 字重 */
+}
 @media (max-width: 1024px) {
   html {
+    min-height: 100vh;
     font-size: 16px;
   }
 }
 @media (max-width: 768px) {
   html {
+    min-height: 100vh;
     font-size: 14px;
   }
 }
 @media (max-width: 576px) {
   html {
+    min-height: 100vh;
     font-size: 12px;
   }
 }
