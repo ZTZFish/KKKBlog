@@ -1,12 +1,17 @@
 <template>
-  <div>
-    <div class="giscus"></div>
-    <script src="https://giscus.app/client.js" data-repo="ZTZFish/KKKBlog" data-repo-id="R_kgDOPJ-S-w"
-      data-category="[在此输入分类名]" data-category-id="[在此输入分类 ID]" data-mapping="pathname" data-strict="0"
-      data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme"
-      data-lang="zh-CN" crossorigin="anonymous" async>
-</script>
+  <div class="giscus-container">
+    <Giscus id="comments" repo="ZTZFish/KKKBlog" repoId="R_kgDOPJ-S-w" category="General"
+      categoryId="DIC_kwDOPJ-S-84Ctf70" mapping="pathname" reactionsEnabled="1" emitMetadata="0" inputPosition="bottom"
+      theme="preferred_color_scheme" lang="zh-CN" loading="lazy" />
   </div>
 </template>
+
 <script lang="ts" setup>
+import Giscus from '@giscus/vue'
 </script>
+
+<style scoped>
+.giscus-container {
+  margin-top: 2rem;
+}
+</style>

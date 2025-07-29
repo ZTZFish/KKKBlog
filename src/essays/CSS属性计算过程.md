@@ -287,4 +287,3 @@ div {
 ---
 
 -_EOF_-
-<GiscusComments />

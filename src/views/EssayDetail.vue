@@ -6,6 +6,7 @@ import { useRoute } from 'vue-router';
 import MarkdownIt from 'markdown-it';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/atom-one-dark.css';
+import GiscusComments from '../components/GiscusComments.vue'
 
 const route = useRoute();
 const mdContent = ref('');
@@ -21,6 +22,7 @@ const md: MarkdownIt = MarkdownIt({
     return `<pre class="hljs"><code>${md.utils.escapeHtml(str)}</code></pre>`;
   }
 });
+
 //监听路由
 watchEffect(async () => {
   if (route.path.startsWith('/essayDetail/')) {
@@ -101,6 +103,7 @@ const copyCode = async (block: HTMLElement) => {
     <ViewsContainer>
       <template #main>
         <div class="markdown-body relative" v-html="mdContent" />
+        <GiscusComments />
       </template>
     </ViewsContainer>
   </div>

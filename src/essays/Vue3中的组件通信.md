@@ -197,5 +197,3 @@ app.use(pinia)
 ### 补充 defineExpose
 
 defineExpose 是 Vue 3 中setup语法中的一个专用 API，用于 向父组件暴露子组件内部的属性或方法 。
-
-<GiscusComment />
