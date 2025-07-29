@@ -9,6 +9,7 @@ import { TDesignResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/KKKBlog/',
   plugins: [
     vue(),
     vueJsx(),
