@@ -16,7 +16,7 @@
       <div class="social-media">
         <div class="github">
           <a href="https://github.com/ZTZFish" target="_blank">
-            <img src="../assets/images/github.png" alt="github" title="github">
+            <img src="../assets/images/GitHub.png" alt="github" title="github">
           </a>
         </div>
         <div class="wechat">
