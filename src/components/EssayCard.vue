@@ -3,7 +3,6 @@ import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-
 // 定义允许的标签类型
 type EssayTag = 'Vue' | 'HTML' | 'CSS' | 'JS' | string;
 
@@ -34,21 +33,15 @@ const enterEssayDetail = () => {
   router.push({
     name: 'essayDetail',
     params: {
-      essayTitle: props.essay.title
+      essayTitle: props.essay.title,
+      essayId: props.essay.id
     }
   })
 }
 
+
 </script>
 
-const enterEssayDetail = () => {
-router.push({
-path: '/essayDetail',
-query: {
-id: props.essay.id
-}
-})
-}
 <template>
   <div class="card-container" @click="enterEssayDetail">
     <div class="card" ref="card">
@@ -65,7 +58,7 @@ id: props.essay.id
           </div>
           <div class="tags">
             <t-tag v-for="tag in props.essay.tags" :key="tag" style="margin-right: 5px;" :color="tagColor(tag)">{{ tag
-              }}</t-tag>
+            }}</t-tag>
           </div>
         </header>
         <div class="content">

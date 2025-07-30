@@ -1,17 +1,40 @@
 <template>
-  <div class="giscus-container">
-    <Giscus id="comments" repo="ZTZFish/KKKBlog" repoId="R_kgDOPJ-S-w" category="General"
-      categoryId="DIC_kwDOPJ-S-84Ctf70" mapping="pathname" reactionsEnabled="1" emitMetadata="0" inputPosition="bottom"
-      theme="preferred_color_scheme" lang="zh-CN" loading="lazy" />
+  <div class="comments-section">
+    <div id="waline"></div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import Giscus from '@giscus/vue'
+import { init } from '@waline/client'
+import '@waline/client/style'
+import { ref, onMounted } from 'vue'
+
+const pagePath = ref(window.location.href)
+onMounted(() => {
+  init({
+    el: '#waline',
+    serverURL: 'https://kkksever.vercel.app/', // 你的 Vercel 部署地址
+    path: pagePath.value,
+    lang: 'zh-CN',
+    meta: ['nick', 'mail', 'link'],
+    requiredMeta: ['nick'],
+    locale: {
+      placeholder: '欢迎留言讨论~',
+    },
+    // avatar: 'mp', // 移除此行
+    // avatarCDN: 'https://sdn.geekzu.org/avatar/', // 移除此行
+    pageSize: 10,
+    noCopyright: false, // 将 copyright: false 修改为 noCopyright: false
+    pageview: true,
+  })
+})
+console.log(window.location.href)
 </script>
 
 <style scoped>
-.giscus-container {
+.comments-section {
   margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
 }
 </style>

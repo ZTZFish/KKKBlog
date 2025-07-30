@@ -5,7 +5,7 @@
     </div>
     <div class="menus">
       <div class="menu-item" :class="{ 'located': isActive('index') }" @click="router.push({ name: 'index' })">首页</div>
-      <div class="menu-item" :class="{ 'located': isActive('articles') }" @click="router.push({ name: 'articles' })">文章
+      <div class="menu-item" :class="{ 'located': isActive('essay') }" @click="router.push({ name: 'essay' })">文章
       </div>
       <div class="menu-item" :class="{ 'located': isActive('photos') }" @click="router.push({ name: 'photos' })">照片墙
       </div>
@@ -26,8 +26,8 @@
     <div class="draw-menus">
       <div class="draw-menu-item" :class="{ 'located': isActive('index') }" @click="router.push({ name: 'index' })">首页
       </div>
-      <div class="draw-menu-item" :class="{ 'located': isActive('articles') }"
-        @click="router.push({ name: 'articles' })">文章</div>
+      <div class="draw-menu-item" :class="{ 'located': isActive('essay') }" @click="router.push({ name: 'essay' })">文章
+      </div>
       <div class="draw-menu-item" :class="{ 'located': isActive('photos') }" @click="router.push({ name: 'photos' })">
         照片墙
       </div>

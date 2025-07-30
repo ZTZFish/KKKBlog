@@ -18,6 +18,10 @@ import HeadMenu from '@/components/HeadMenu.vue'
 </template>
 
 <style lang="scss" scoped>
+html {
+  min-height: 100vh;
+}
+
 .view {
   display: grid;
   grid-template-areas: 'none main user';
@@ -51,6 +55,7 @@ import HeadMenu from '@/components/HeadMenu.vue'
     grid-template-columns: 1fr 7fr 3fr;
 
     .main {
+      max-width: 100%;
       margin-left: 0;
     }
   }
@@ -62,6 +67,24 @@ import HeadMenu from '@/components/HeadMenu.vue'
     grid-template-columns: 1fr;
 
     .main {
+      max-width: 100%;
+      margin-left: 0;
+      padding: 0 5vw;
+    }
+
+    .user {
+      display: none;
+    }
+  }
+}
+
+@media(max-width:576px) {
+  .view {
+    grid-template-areas: 'main';
+    grid-template-columns: 1fr;
+
+    .main {
+      max-width: 100%;
       margin-left: 0;
       padding: 0 5vw;
     }

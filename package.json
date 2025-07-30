@@ -13,7 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@giscus/vue": "^3.1.1",
+    "@waline/client": "^3.6.0",
     "gsap": "^3.13.0",
     "highlight.js": "^11.11.1",
     "markdown-it": "^14.1.0",

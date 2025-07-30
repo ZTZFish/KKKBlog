@@ -7,6 +7,16 @@ import MarkdownIt from 'markdown-it';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/atom-one-dark.css';
 import GiscusComments from '../components/GiscusComments.vue'
+// 从 @waline/client 包中导入 pageviewCount
+import { pageviewCount } from '@waline/client';
+
+pageviewCount({
+  serverURL: 'https://kkksever.vercel.app',
+  path: window.location.href,
+  // 可选的，用于自定选择器，默认为 `'.waline-pageview-count'`
+  // selector: 'waline-pageview-count',
+  update: true,
+});
 
 const route = useRoute();
 const mdContent = ref('');
@@ -103,6 +113,9 @@ const copyCode = async (block: HTMLElement) => {
     <ViewsContainer>
       <template #main>
         <div class="markdown-body relative" v-html="mdContent" />
+        <span style="display: block; margin-top: 2rem;padding-left: 2vw;">
+          本文阅读量：<span class="waline-pageview-count" />
+        </span>
         <GiscusComments />
       </template>
     </ViewsContainer>
@@ -111,11 +124,28 @@ const copyCode = async (block: HTMLElement) => {
 
 <style lang="scss" scoped>
 .markdown-body {
-  padding: 5vh 2vw 10vh;
+  max-width: 100%;
+  padding: 5vh 2vw;
 
   :deep(p img) {
+    display: block;
     width: 100%;
     border: 1px solid #e3e5e7;
+  }
+
+  :deep(pre.hljs) {
+    // 允许代码块内横向滚动（而非撑开容器）
+    overflow-x: auto;
+    // 避免代码块因 padding 超出容器
+    box-sizing: border-box;
+    // 可选：限制最大宽度为父容器 100%
+    max-width: 100%;
+  }
+
+  :deep(code) {
+    // 禁止代码换行（保持代码格式），配合 pre 的 overflow-x: auto 实现滚动
+    white-space: pre;
+    word-break: normal;
   }
 }
 </style>
