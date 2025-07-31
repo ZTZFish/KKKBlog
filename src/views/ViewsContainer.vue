@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import UserInfo from '@/components/UserInfo.vue'
 import HeadMenu from '@/components/HeadMenu.vue'
+import TopPage from '@/components/TopPage.vue';
 </script>
 
 <template>
@@ -13,7 +14,12 @@ import HeadMenu from '@/components/HeadMenu.vue'
     <div class="user" ref="user">
       <UserInfo />
     </div>
+    <div class="handle">
+      <TopPage />
+    </div>
   </div>
+
+
 </template>
 
 <style lang="scss" scoped>
@@ -30,6 +36,7 @@ body {
 }
 
 .view {
+  position: relative;
   display: grid;
   grid-template-areas: 'none main user';
   grid-template-columns: 1fr 7fr 3fr;
@@ -59,6 +66,19 @@ body {
     grid-area: user;
     z-index: 100;
   }
+
+  .handle {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 3vw;
+    height: 100vh; // 确保不干扰其他元素
+    z-index: 100;
+
+    @media screen and (max-width: 768px) {
+      display: none; // 在小屏幕上隐藏
+    }
+  }
 }
 
 // 平板响应式 (1024px 及以下)
@@ -78,7 +98,7 @@ body {
     }
 
     .user {
-      width: 20%; // 稍微减小侧边栏宽度
+      width: 25%; // 稍微减小侧边栏宽度
       right: 2%;
     }
   }

@@ -9,6 +9,8 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AsideMenu: typeof import('./src/components/AsideMenu.vue')['default']
+    Back: typeof import('./src/components/Back.vue')['default']
+    BackPage: typeof import('./src/components/BackPage.vue')['default']
     ChangeAnimation: typeof import('./src/components/ChangeAnimation.vue')['default']
     EssayCard: typeof import('./src/components/EssayCard.vue')['default']
     GiscusComments: typeof import('./src/components/GiscusComments.vue')['default']
@@ -17,12 +19,14 @@ declare module 'vue' {
     LoadingAnimation: typeof import('./src/components/LoadingAnimation.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TBackTop: typeof import('tdesign-vue-next')['BackTop']
     TButton: typeof import('tdesign-vue-next')['Button']
     TDivider: typeof import('tdesign-vue-next')['Divider']
     TDrawer: typeof import('tdesign-vue-next')['Drawer']
     THeadMenu: typeof import('tdesign-vue-next')['HeadMenu']
     TIcon: typeof import('tdesign-vue-next')['Icon']
     TLoading: typeof import('tdesign-vue-next')['Loading']
+    TopPage: typeof import('./src/components/TopPage.vue')['default']
     TSwiper: typeof import('tdesign-vue-next')['Swiper']
     TSwiperItem: typeof import('tdesign-vue-next')['SwiperItem']
     TTag: typeof import('tdesign-vue-next')['Tag']

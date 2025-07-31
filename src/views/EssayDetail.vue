@@ -8,6 +8,7 @@ import hljs from 'highlight.js';
 import 'highlight.js/styles/atom-one-dark.css';
 import GiscusComments from '../components/GiscusComments.vue'
 import { pageviewCount } from '@waline/client';
+import BackPage from '@/components/BackPage.vue';
 
 pageviewCount({
   serverURL: 'https://kkksever.vercel.app',
@@ -111,6 +112,7 @@ const copyCode = async (block: HTMLElement) => {
     <ChangeAnimation />
     <ViewsContainer>
       <template #main>
+        <BackPage class="back"/>
         <div class="markdown-body" v-html="mdContent" />
         <div class="pageview-section">
           本文阅读量：<span class="waline-pageview-count" />
@@ -122,12 +124,25 @@ const copyCode = async (block: HTMLElement) => {
 </template>
 
 <style lang="scss" scoped>
+.back {
+  width: 65px;
+  height: 65px;
+  position: fixed;
+  bottom: 150px;
+  right: 24px;
+  z-index: 100;
+  cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
 .markdown-body {
   width: 100%;
   max-width: 100%;
-  padding: 5vh 2vw;
+  padding: 1vh 2vw 5vh;
   box-sizing: border-box;
-  overflow-wrap: break-word;
   word-wrap: break-word;
 
   // 图片响应式处理
