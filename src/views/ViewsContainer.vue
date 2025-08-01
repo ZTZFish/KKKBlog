@@ -19,7 +19,6 @@ import TopPage from '@/components/TopPage.vue';
     </div>
   </div>
 
-
 </template>
 
 <style lang="scss" scoped>
@@ -55,6 +54,7 @@ body {
     max-width: 100%;
     box-sizing: border-box;
     overflow-x: hidden; // 关键：防止主内容区域水平溢出
+    overflow-y: hidden;
     min-width: 0; // 允许 flex/grid 子元素收缩
   }
 

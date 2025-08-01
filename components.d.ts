@@ -29,7 +29,11 @@ declare module 'vue' {
     TopPage: typeof import('./src/components/TopPage.vue')['default']
     TSwiper: typeof import('tdesign-vue-next')['Swiper']
     TSwiperItem: typeof import('tdesign-vue-next')['SwiperItem']
+    TTabPanel: typeof import('tdesign-vue-next')['TabPanel']
+    TTabs: typeof import('tdesign-vue-next')['Tabs']
     TTag: typeof import('tdesign-vue-next')['Tag']
+    TTimeline: typeof import('tdesign-vue-next')['Timeline']
+    TTimelineItem: typeof import('tdesign-vue-next')['TimelineItem']
     UserInfo: typeof import('./src/components/UserInfo.vue')['default']
   }
 }

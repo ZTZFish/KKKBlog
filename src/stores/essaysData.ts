@@ -38,6 +38,14 @@ export const essayDataStore = defineStore('essayData', () => {
       content: '本文主要介绍CSS中的包含块，包括块级元素、行内元素、行内块元素等。',
       time: '2025-7-29',
     },
+    {
+      id: 5,
+      title: 'CSS过渡效果',
+      tags: ['HTML', 'CSS'],
+      bgc: images.value[4].url,
+      content: '本文主要介绍CSS中的过渡效果，包括过渡属性、过渡时间、过渡函数等。',
+      time: '2025-7-30',
+    },
   ])
   return { essays }
 })

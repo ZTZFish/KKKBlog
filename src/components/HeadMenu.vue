@@ -35,6 +35,7 @@
         爱好</div>
       <div class="draw-menu-item" :class="{ 'located': isActive('resource') }"
         @click="router.push({ name: 'resource' })">资源</div>
+      <div class="draw-menu-item" @click="router.go(-1)">返回上一页</div>
     </div>
   </t-drawer>
 </template>
@@ -181,6 +182,10 @@ const showMenu = () => {
       background-size: contain;
       background-repeat: no-repeat;
     }
+  }
+
+  .draw-menu-item:last-child {
+    margin-top: 50px;
   }
 }
 
