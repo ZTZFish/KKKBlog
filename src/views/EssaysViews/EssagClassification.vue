@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { essayDataStore } from '@/stores/essaysData'
-import EssayCard from '@/components/EssayCard.vue'
+import EssayCard from '@/components/EssayCompo/EssayCard.vue'
 import BackPage from '@/components/BackPage.vue'
 
 
@@ -18,13 +18,13 @@ const showEssays = (tag: string) => {
   <div class="calssification" v-show="!isShowEssays">
     <div class="container">
       <div class="HTML" @click="showEssays('HTML')">
-        <img src="../assets/images/essayClassification/HTML5.png" alt="">
+        <img src="../../assets/images/essayClassification/HTML5.png" alt="">
       </div>
       <div class="CSS" @click="showEssays('CSS')">
-        <img src="../assets/images/essayClassification/CSS3.png" alt="">
+        <img src="../../assets/images/essayClassification/CSS3.png" alt="">
       </div>
       <div class="Vue" @click="showEssays('Vue')">
-        <img src="../assets/images/essayClassification/VUE.png" alt="">
+        <img src="../../assets/images/essayClassification/VUE.png" alt="">
       </div>
     </div>
   </div>

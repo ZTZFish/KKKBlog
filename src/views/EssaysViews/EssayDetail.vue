@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import ViewsContainer from '../views/ViewsContainer.vue'
-import ChangeAnimation from '../components/ChangeAnimation.vue'
+import ViewsContainer from '../ViewsContainer.vue'
+import ChangeAnimation from '../../components/AnimatiionCompo/ChangeAnimation.vue'
 import { ref, watchEffect, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
 import MarkdownIt from 'markdown-it';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/atom-one-dark.css';
-import GiscusComments from '../components/GiscusComments.vue'
+import GiscusComments from '../../components/EssayCompo/GiscusComments.vue'
 import { pageviewCount } from '@waline/client';
 
 
@@ -34,7 +34,7 @@ watchEffect(async () => {
   if (route.path.startsWith('/essayDetail/')) {
     try {
       const { default: markdown } = await import(
-        `../essays/${route.params.essayTitle}.md?raw`
+        `../../essays/${route.params.essayTitle}.md?raw`
       );
       mdContent.value = md.render(markdown);
 

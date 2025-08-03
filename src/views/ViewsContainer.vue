@@ -48,7 +48,7 @@ body {
 
   .main {
     grid-area: main;
-    padding: 0 2vw;
+    padding: 0 2vw 5vh;
     background-color: #fff;
     width: 100%;
     max-width: 100%;

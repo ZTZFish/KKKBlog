@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import LoadingAnimation from '../components/LoadingAnimation.vue'
+import LoadingAnimation from './LoadingAnimation.vue'
 import { ref, onMounted } from 'vue';
 
 const loading = ref(true);

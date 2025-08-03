@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import ViewsContainer from '@/views/ViewsContainer.vue'
-import ChangeAnimation from '@/components/ChangeAnimation.vue'
+import ViewsContainer from '../ViewsContainer.vue'
+import ChangeAnimation from '@/components/AnimatiionCompo/ChangeAnimation.vue'
 import PigeonHole from './PigeonHole.vue';
 import EssagClassification from './EssagClassification.vue';
 import { ref, onActivated, nextTick } from 'vue'

@@ -22,12 +22,45 @@ const router = createRouter({
     {
       path: '/essay',
       name: 'essay',
-      component: () => import('../views/EssayView.vue'),
+      component: () => import('../views/EssaysViews/EssayView.vue'),
     },
     {
       path: '/hobbies',
       name: 'hobbies',
-      component: () => import('../views/HobbiesView.vue'),
+      component: () => import('../views/HobbiesViews/HobbiesView.vue'),
+      meta: { title: '爱好' }, // 一级标题
+      children: [
+        {
+          path: 'novel',
+          name: 'novel',
+          component: () => import('../views/HobbiesViews/NovelCommonView.vue'),
+          meta: {
+            type: 'list',
+            secondTitle: '小说', // 二级标题
+          },
+        },
+        {
+          path: 'novel/chapterList/:novelTitle',
+          name: 'chapterList',
+          component: () => import('../views/HobbiesViews/NovelCommonView.vue'),
+          meta: {
+            type: 'chapterList',
+            secondTitle: '小说', // 继承二级标题
+            thirdTitle: 'fromParams', // 三级标题来自参数
+          },
+        },
+        {
+          path: 'novel/chapterList/:novelTitle/chapter/:chapterTitle',
+          name: 'chapter',
+          component: () => import('../views/HobbiesViews/NovelCommonView.vue'),
+          meta: {
+            type: 'chapterDetail',
+            secondTitle: '小说',
+            thirdTitle: 'fromParams',
+            fourthTitle: 'fromParams', // 四级标题来自参数
+          },
+        },
+      ],
     },
     {
       path: '/resource',
@@ -37,12 +70,7 @@ const router = createRouter({
     {
       path: '/essayDetail/:essayTitle',
       name: 'essayDetail',
-      component: () => import('../views/EssayDetail.vue'),
-    },
-    {
-      path: '/comment',
-      name: 'comment',
-      component: () => import('../views/EssayDetail.vue'),
+      component: () => import('../views/EssaysViews/EssayDetail.vue'),
     },
   ],
 })

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import ViewsContainer from '../views/ViewsContainer.vue'
-import ChangeAnimation from '../components/ChangeAnimation.vue'
-import EssayCard from '@/components/EssayCard.vue';
+import ChangeAnimation from '../components/AnimatiionCompo/ChangeAnimation.vue'
+import EssayCard from '@/components/EssayCompo/EssayCard.vue';
 import { essayDataStore } from '@/stores/essaysData'
 
 const essayData = essayDataStore()

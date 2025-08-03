@@ -65,7 +65,7 @@ const enterEssayDetail = () => {
           <span>{{ props.essay.content }}</span>
         </div>
         <footer>
-          <img src="../assets/icon/时钟-fill.svg" alt="">
+          <img src="../../assets/icon/时钟-fill.svg" alt="">
           <span>{{ props.essay.time }}</span>
         </footer>
       </div>
