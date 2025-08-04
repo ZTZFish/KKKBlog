@@ -6,7 +6,6 @@ import TopPage from '@/components/TopPage.vue';
 
 <template>
   <HeadMenu />
-  <t-divider style="margin: 0;" />
   <div class="view">
     <main class="main">
       <slot name="main"></slot>

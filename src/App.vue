@@ -4,7 +4,7 @@
 <template>
   <!-- 需要缓存时，必须用插槽 -->
   <router-view v-slot="{ Component }">
-    <keep-alive include="EssayView">
+    <keep-alive :include="['EssayView', 'HobbiesView']">
       <component :is="Component" />
     </keep-alive>
   </router-view>

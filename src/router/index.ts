@@ -35,12 +35,12 @@ const router = createRouter({
           name: 'novel',
           component: () => import('../views/HobbiesViews/NovelCommonView.vue'),
           meta: {
-            type: 'list',
+            type: 'novelList',
             secondTitle: '小说', // 二级标题
           },
         },
         {
-          path: 'novel/chapterList/:novelTitle',
+          path: 'novel/:novelTitle/chapterList',
           name: 'chapterList',
           component: () => import('../views/HobbiesViews/NovelCommonView.vue'),
           meta: {
@@ -50,7 +50,7 @@ const router = createRouter({
           },
         },
         {
-          path: 'novel/chapterList/:novelTitle/chapter/:chapterTitle',
+          path: 'novel/:novelTitle/chapterList/chapter/:chapterTitle',
           name: 'chapter',
           component: () => import('../views/HobbiesViews/NovelCommonView.vue'),
           meta: {
