@@ -1,0 +1,138 @@
+import { ref } from 'vue'
+import { defineStore } from 'pinia'
+
+export const useResourceStore = defineStore('resource', () => {
+  const sourceType = ref(['Vue组件库', '图标库', '动漫', '工具', '其他'])
+  const resource = ref([
+    {
+      id: 1,
+      title: 'pixabay',
+      intro: '免费的图片资源',
+      iconUrl: 'https://pixabay.com/favicon-32x32.png',
+      url: 'https://pixabay.com/zh/',
+      type: '其他',
+    },
+    {
+      id: 2,
+      title: 'Element-plus',
+      intro: '适合快速开发，对UI要求不高的项目',
+      iconUrl: 'https://element-plus.org/images/element-plus-logo-small.svg',
+      url: 'https://element-plus.org/zh-CN/',
+      type: 'Vue组件库',
+    },
+    {
+      id: 3,
+      title: 'Ant-design-vue',
+      intro: '适合企业集中后台开发的产品',
+      iconUrl: 'https://aliyuncdn.antdv.com/favicon.ico',
+      url: 'https://antdv.com/components/overview-cn',
+      type: 'Vue组件库',
+    },
+    {
+      id: 4,
+      title: 'TDesign',
+      intro: '需要统一设计规范，多平台支持的企业级项目',
+      iconUrl: 'https://static.tdesign.tencent.com/favicon.ico',
+      url: 'https://tdesign.tencent.com/',
+      type: 'Vue组件库',
+    },
+    {
+      id: 5,
+      title: 'NaiveUI',
+      intro: '轻量级、高性能的项目',
+      iconUrl: 'https://www.naiveui.com/assets/naivelogo-BdDVTUmz.svg',
+      url: 'https://www.naiveui.com/zh-CN/os-theme',
+      type: 'Vue组件库',
+    },
+    {
+      id: 6,
+      title: 'VantUI',
+      intro: '轻量、可定制的移动端 Vue 组件库',
+      iconUrl: 'https://fastly.jsdelivr.net/npm/@vant/assets/logo.png',
+      url: 'https://develop365.gitlab.io/vant/zh-CN/home/#/zh-CN/home',
+      type: 'Vue组件库',
+    },
+    {
+      id: 7,
+      title: 'Arco Design',
+      intro: '字节出品，更加现代化',
+      iconUrl: 'https://unpkg.byted-static.com/latest/byted/arco-config/assets/favicon.ico',
+      url: 'https://arco.design/',
+      type: 'Vue组件库',
+    },
+    {
+      id: 8,
+      title: 'FontAwesome',
+      intro: '一款专业的互联网图标库和工具套件,v4版本免费',
+      iconUrl: 'https://fa6.dashgame.com/assets/img/icon.svg',
+      url: 'https://fa6.dashgame.com/',
+      type: '图标库',
+    },
+    {
+      id: 9,
+      title: 'omofun',
+      intro: '重生之我在omofun看动漫',
+      iconUrl: 'https://www.omofuna.com/template/the4/statics/img/favicon.ico',
+      url: 'https://www.omofuna.com/',
+      type: '动漫',
+    },
+    {
+      id: 10,
+      title: 'AGE动漫',
+      intro: '求求再更新一集吧，我什么都会做的',
+      iconUrl: 'https://www.agedm.vip/favicon.ico',
+      url: 'https://www.agedm.vip/',
+      type: '动漫',
+    },
+    {
+      id: 11,
+      title: 'vidhub',
+      intro: '不止有动漫',
+      iconUrl: 'https://vidhub.tv/mxstatic/image/logo2.png',
+      url: 'https://vidhub.tv/',
+      type: '动漫',
+    },
+    {
+      id: 12,
+      title: 'icons',
+      intro: '大型图标素材包，超过1万个图标',
+      iconUrl: 'https://maxst.icons8.com/vue-static/icon/favicon/icons8_fav_32%C3%9732.png',
+      url: 'https://igoutu.cn/icons',
+      type: '图标库',
+    },
+    {
+      id: 13,
+      title: 'iconfont',
+      intro: '从素材到 AI 工具，轻松做设计',
+      iconUrl:
+        'https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg',
+      url: 'https://www.iconfont.cn/',
+      type: '图标库',
+    },
+    {
+      id: 14,
+      title: 'Imgdiet',
+      intro: '免费的图片压缩转换工具',
+      iconUrl: 'https://www.imgdiet.com/favicon-32x32.ico',
+      url: 'https://www.imgdiet.com/zh-CN/compress',
+      type: '工具',
+    },
+    {
+      id: 15,
+      title: 'FreeConvert',
+      intro: '免费的视频压缩转换工具',
+      iconUrl: 'https://www.freeconvert.com/favicon.ico',
+      url: 'https://www.freeconvert.com/zh/video-converter',
+      type: '工具',
+    },
+    {
+      id: 16,
+      title: '极简Polebrief',
+      intro: '免费的简历的编辑工具，简约，无广告',
+      iconUrl: 'https://www.polebrief.com/favicon.ico',
+      url: 'https://www.polebrief.com/edit',
+      type: '工具',
+    },
+  ])
+  return { sourceType, resource }
+})
