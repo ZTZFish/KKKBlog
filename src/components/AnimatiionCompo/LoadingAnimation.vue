@@ -2229,7 +2229,7 @@ html {
 }
 
 body {
-  background: var(--color-just-black);
+  background: var(--color-bg);
   overflow: hidden;
 }
 
@@ -2264,7 +2264,7 @@ body {
 
 .cell {
   position: relative;
-  background: var(--color-just-black);
+  background: var(--color-bg);
   height: calc(100vw / 16);
   width: calc(100vw / 16);
 }
@@ -2291,7 +2291,7 @@ h1 {
 }
 
 .bg {
-  color: var(--color-surface-white);
+  color: var(--color-bg);
   z-index: -1;
 }
 

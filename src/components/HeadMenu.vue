@@ -14,6 +14,10 @@
       <div class="menu-item" :class="{ 'located': isActive('resource') }" @click="router.push({ name: 'resource' })">资源
       </div>
     </div>
+    <div class="style">
+      <t-switch size="large" :label="['日', '夜']" :checked="pageThemeStore.pageTheme === ''"
+        @change="pageThemeStore.toggleTheme"></t-switch>
+    </div>
     <div class="hubMenu">
       <t-button theme="default" variant="text" @click="showMenu">
         <img src="../assets/images/hubMenu.png" alt="菜单">
@@ -44,6 +48,15 @@
 import UserInfo from './UserInfo.vue'
 import { ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { usePageThemeStore } from '@/stores/pageTheme'
+import { onMounted } from 'vue'
+
+const pageThemeStore = usePageThemeStore()
+
+// 初始化时同步主题到页面
+onMounted(() => {
+  document.documentElement.setAttribute('theme-mode', pageThemeStore.pageTheme)
+})
 
 const router = useRouter()
 const route = useRoute()
@@ -64,6 +77,7 @@ const showMenu = () => {
   visible.value = true
   emit('showUser')
 }
+
 
 
 </script>
@@ -93,6 +107,9 @@ const showMenu = () => {
     height: 100%;
     cursor: pointer;
 
+    &:hover {
+      opacity: 0.8;
+    }
 
     img {
       width: 100%;
@@ -128,7 +145,11 @@ const showMenu = () => {
         border-bottom: 2px solid #007bff;
       }
     }
+  }
 
+  .style {
+    margin-left: auto;
+    margin-right: 10rem;
   }
 
   .hubMenu {
@@ -163,7 +184,7 @@ const showMenu = () => {
     align-items: center;
     margin: 10px 0;
     font-size: 1.2em;
-    color: #000;
+    color: var(--color-text);
     cursor: pointer;
 
     &.located {

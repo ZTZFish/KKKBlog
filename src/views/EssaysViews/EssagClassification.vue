@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import { essayDataStore } from '@/stores/essaysData'
 import EssayCard from '@/components/EssayCompo/EssayCard.vue'
-import BackPage from '@/components/BackPage.vue'
 
 
 const essayData = essayDataStore()
@@ -29,7 +28,7 @@ const showEssays = (tag: string) => {
     </div>
   </div>
   <div class="essays" v-if="isShowEssays && essayList.length > 0">
-    <BackPage class="back" @click.stop="isShowEssays = false" />
+    <t-button shape="round" variant="outline" @click.stop="isShowEssays = false">返回</t-button>
     <div class="essay-container">
       <div class="essay-item" v-for="(item, index) in essayList" :key="index">
         <EssayCard :essay="item" />
@@ -76,14 +75,6 @@ const showEssays = (tag: string) => {
     padding-top: 1rem;
     padding-bottom: 5rem;
 
-    .back {
-      width: 50px;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-    }
   }
 }
 </style>

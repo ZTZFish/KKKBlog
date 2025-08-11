@@ -183,14 +183,14 @@ const formattedContent = computed(() => {
   margin: 0 auto;
   padding: 40px 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #333;
-  background: #fafafa;
+  color: var(--color-text);
+  background: var(--color-bg);
   min-height: 100vh;
 
   h2 {
     font-size: 1.8rem;
     font-weight: 400;
-    color: #222;
+    color: var(--color-text);
     margin-bottom: 40px;
     text-align: left;
     border-bottom: 1px solid #e5e5e5;
@@ -206,7 +206,7 @@ const formattedContent = computed(() => {
     margin-top: 32px;
 
     >div {
-      background: white;
+      background: var(--color-bg);
       border: 1px solid #e8e8e8;
       border-radius: 4px;
       padding: 5px;
@@ -229,7 +229,7 @@ const formattedContent = computed(() => {
         height: 300px;
         border-radius: 2px;
         overflow: hidden;
-        background: #f5f5f5;
+        background: var(--color-bg);
         flex-shrink: 0;
         /* 关键：禁止收缩 */
 
@@ -251,7 +251,7 @@ const formattedContent = computed(() => {
         .novel-title {
           font-size: 1.5rem;
           font-weight: 500;
-          color: #444;
+          color: var(--color-text);
           margin: 0 0 8px 0;
           text-align: center;
           line-height: 1.4;
@@ -261,9 +261,8 @@ const formattedContent = computed(() => {
         .novel-info {
           text-align: center;
           font-size: 1rem;
-          color: #666;
+          color: var(--color-text);
           line-height: 1.4;
-
 
           .tags {
             margin-bottom: 12px;
@@ -297,11 +296,11 @@ const formattedContent = computed(() => {
     }
 
     .menu-item:first-child.active {
-      border-bottom: 2px solid #333;
+      border-bottom: 2px solid var(--color-text);
     }
 
     .menu-item:last-child.active {
-      border-bottom: 2px solid #333;
+      border-bottom: 2px solid var(--color-text);
     }
   }
 
@@ -312,14 +311,14 @@ const formattedContent = computed(() => {
     margin: 32px 0;
 
     li {
-      background: white;
+      background: var(--color-bg);
       border: 1px solid #e8e8e8;
       border-top: none;
       padding: 16px 20px;
       cursor: pointer;
       transition: background-color 0.15s ease;
       font-size: 0.95rem;
-      color: #555;
+      color: var(--color-text);
 
       &:first-child {
         border-top: 1px solid #e8e8e8;
@@ -371,7 +370,7 @@ const formattedContent = computed(() => {
       width: 100%;
       // 新增：确保容器不会被内容撑开
       overflow: visible;
-      background: white;
+      background: var(--color-bg);
       border: 1px solid #e8e8e8;
       border-radius: 4px;
       padding: 1rem;
@@ -384,7 +383,7 @@ const formattedContent = computed(() => {
         padding: 0;
         text-indent: 2em; // 首行缩进2个字符
         font-size: 1rem;
-        color: #444;
+        color: var(--color-text);
       }
     }
 

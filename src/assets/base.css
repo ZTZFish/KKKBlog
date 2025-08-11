@@ -22,7 +22,7 @@
 }
 
 /* semantic color variables for this project */
-:root {
+/* :root {
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
@@ -34,8 +34,28 @@
   --color-text: var(--vt-c-text-light-1);
 
   --section-gap: 160px;
+} */
+/* 全局样式文件（如 src/styles/index.scss） */
+/* 基础变量（默认日间模式） */
+:root {
+  --color-text: #333333; /* 文本颜色 */
+  --color-bg: #ffffff; /* 背景颜色 */
+  --color-border: #e5e7eb; /* 边框颜色 */
+  --color-hover: #f3f4f6; /*  hover 背景 */
+  --color-bg-hover: #e5e7eb; /*  hover 背景 */
+  /* 可根据需要添加更多变量（如按钮颜色、卡片背景等） */
+  --color-body-bg: #f5f5f5;
 }
 
+/* 夜间模式变量（通过 theme-mode 属性切换） */
+:root[theme-mode='dark'] {
+  --color-text: #e5e7eb; /* 夜间文本颜色（浅灰） */
+  --color-bg: #1f2937; /* 夜间背景（深灰） */
+  --color-border: #374151; /* 夜间边框（深灰） */
+  --color-hover: #75777a; /* 夜间 hover 背景 */
+  --color-text-hover: #000000; /* 夜间 hover 文本颜色 */
+  --color-body-bg: #2d3c51;
+}
 /* 修改字体 */
 :root {
   --td-font-family: 'LXGW WenKai', PingFang SC, Microsoft YaHei, Arial Regular;

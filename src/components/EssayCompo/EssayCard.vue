@@ -133,7 +133,7 @@ const enterEssayDetail = () => {
       padding: 15px;
       border-radius: 10px;
       transform: translateZ(-50px) rotateY(180deg);
-      background-color: #fff;
+      background-color: var(--color-body-bg);
 
       header {
         display: flex;
@@ -143,7 +143,7 @@ const enterEssayDetail = () => {
         .title {
           display: block;
           margin: 0 auto;
-          color: #000;
+          color: var(--color-text);
           font-size: 1.2rem;
         }
 

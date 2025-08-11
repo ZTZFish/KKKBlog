@@ -38,7 +38,7 @@ body {
   display: grid;
   grid-template-areas: 'none main user';
   grid-template-columns: 1fr 7fr 3fr;
-  background-color: #f5f5f5;
+  background-color: var(--color-body-bg);
   min-height: 100vh;
   margin-top: 56px;
   width: 100%;
@@ -48,7 +48,7 @@ body {
   .main {
     grid-area: main;
     padding: 0 2vw 5vh;
-    background-color: #fff;
+    background-color: var(--color-bg);
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;

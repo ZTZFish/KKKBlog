@@ -45,4 +45,8 @@ defineOptions({
 
 
 
-<style scoped></style>
+<style style='scss' scoped>
+:deep(.t-tabs) {
+  height: 100%;
+}
+</style>

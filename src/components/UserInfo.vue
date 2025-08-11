@@ -55,7 +55,7 @@
   width: 80%;
   height: auto;
   margin: 5vh auto 0;
-  background-color: #fff;
+  background-color: var(--color-bg);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   /* 禁用用户选择文本 */
@@ -87,6 +87,9 @@
     align-items: center;
     width: 100%;
     height: auto;
+    border-radius: 0 0 10px 10px;
+    background-color: var(--color-bg);
+    color: var(--color-text);
 
     .avatar {
       box-sizing: border-box;
@@ -108,7 +111,6 @@
     .name {
       font-size: 20px;
       font-weight: 600;
-      color: #333;
     }
 
     .welcome {
@@ -118,7 +120,7 @@
       align-items: center;
       font-size: 16px;
       font-weight: 400;
-      color: #666;
+      color: var(--color-text);
       margin-top: 10px;
     }
 

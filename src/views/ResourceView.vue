@@ -3,6 +3,7 @@ import ChangeAnimation from '@/components/AnimatiionCompo/ChangeAnimation.vue';
 import ViewContainer from './ViewsContainer.vue';
 import { computed } from 'vue';
 import { useResourceStore } from '@/stores/resource';
+
 const resourceStore = useResourceStore();
 const resource = resourceStore.resource;
 const sourceType = resourceStore.sourceType;
@@ -25,13 +26,15 @@ const filteredResource = computed(() => {
             <h2 class="type-title">{{ type }}</h2>
             <div class="resource-list">
               <div class="resource-item" v-for="item in filteredResource(type)" :key="item.id">
-                <div class="icon">
-                  <img :src="item.iconUrl" alt="">
-                </div>
-                <div class="info">
-                  <span class="title">{{ item.title }}</span>
-                  <span class="intro">{{ item.intro }}</span>
-                </div>
+                <a :href="item.url" target="_blank">
+                  <div class="icon">
+                    <img :src="item.iconUrl" alt="">
+                  </div>
+                  <div class="info">
+                    <span class="title">{{ item.title }}</span>
+                    <span class="intro">{{ item.intro }}</span>
+                  </div>
+                </a>
               </div>
             </div>
           </div>
@@ -62,6 +65,27 @@ const filteredResource = computed(() => {
       border: 1px solid #ccc;
       border-radius: 10px;
       padding: 0.4rem;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+
+      &:hover {
+        border-color: var(--color-text);
+        background-color: var(--color-bg-hover);
+        color: var(--color-text-hover);
+
+        a {
+          color: var(--color-text-hover);
+        }
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: var(--color-text);
+      }
 
       .icon {
         display: flex;

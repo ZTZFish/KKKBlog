@@ -29,6 +29,7 @@ onMounted(() => {
   height: 100%;
   background-color: rgba(255, 255, 255, 1);
   /* 白色背景 */
+  background-color: var(--color-bg);
   z-index: 998;
 
 }
