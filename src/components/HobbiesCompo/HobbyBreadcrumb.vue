@@ -72,6 +72,14 @@ const chapterTitle = computed(() => {
       :to="{ name: 'novel' }">
       小说
     </t-breadcrumbItem>
+    <!-- 二级：音乐 (在音乐相关页面都显示) -->
+    <t-breadcrumbItem v-if="$route.name === 'music'" :to="{ name: 'music' }">
+      音乐
+    </t-breadcrumbItem>
+    <!-- 二级：生活 (在生活相关页面都显示) -->
+    <t-breadcrumbItem v-if="$route.name === 'life'" :to="{ name: 'life' }">
+      生活
+    </t-breadcrumbItem>
 
     <!-- 三级：小说名称 (在章节列表页和章节详情页显示) -->
     <t-breadcrumbItem v-if="isChapterListPage || isChapterDetailPage" :to="{

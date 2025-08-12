@@ -60,6 +60,24 @@ const router = createRouter({
             fourthTitle: 'fromParams', // 四级标题来自参数
           },
         },
+        {
+          path: 'music',
+          name: 'music',
+          component: () => import('../views/HobbiesViews/MusicCommonView.vue'),
+          meta: {
+            type: 'musicList',
+            secondTitle: '音乐', // 二级标题
+          },
+        },
+        {
+          path: 'life',
+          name: 'life',
+          component: () => import('../views/HobbiesViews/LifeCommonView.vue'),
+          meta: {
+            type: 'lifeList',
+            secondTitle: '生活', // 二级标题
+          },
+        },
       ],
     },
     {

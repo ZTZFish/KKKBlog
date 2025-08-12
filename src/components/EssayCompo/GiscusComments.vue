@@ -26,12 +26,14 @@ onMounted(() => {
     pageSize: 10,
     noCopyright: false, // 将 copyright: false 修改为 noCopyright: false
     pageview: true,
+    // 关键修改：绑定到 theme-mode 属性
+    dark: ':root[theme-mode="dark"]'
   })
 })
 console.log(window.location.href)
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .comments-section {
   margin-top: 2rem;
   padding-top: 2rem;

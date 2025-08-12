@@ -433,7 +433,7 @@ const formattedContent = computed(() => {
     padding: 16px 0;
 
     .novel-container {
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 12px;
     }
 

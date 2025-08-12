@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
-import router from '@/router';
+
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 const animationTriggered = ref(false);
 
@@ -23,10 +25,9 @@ const enterIndex = () => {
       <img src="../assets/images/Logo.png" alt="logo">
     </div>
     <div class="menu">
-      <t-button ghost variant="text">首页</t-button>
-      <t-button ghost variant="text">文章</t-button>
-      <t-button ghost variant="text">关于</t-button>
-      <t-button ghost variant="text">登录</t-button>
+      <t-button ghost variant="text" @click="router.push({ name: 'index' })">首页</t-button>
+      <t-button ghost variant="text" @click="router.push({ name: 'essay' })">文章</t-button>
+      <t-button ghost variant="text" @click="router.push({ name: 'hobbies' })">爱好</t-button>
     </div>
   </header>
   <main class="home">
@@ -38,15 +39,21 @@ const enterIndex = () => {
         <span class="line line-3">一个喜欢写作和发呆的菜鸟前端</span>
         <div class="line line-4">
           <t-button variant="outline" ghost @click="enterIndex">进入首页</t-button>
-          <t-button shape="circle" variant="outline" ghost>
-            <template #icon><t-icon name="logo-github" /></template>
-          </t-button>
-          <t-button shape="circle" variant="outline" ghost>
-            <template #icon><t-icon name="logo-wechat-stroke" /></template>
-          </t-button>
-          <t-button shape="circle" variant="outline" ghost>
-            <template #icon><t-icon name="mail" /></template>
-          </t-button>
+          <a href="https://github.com/ZTZFish" target="_blank" title="github">
+            <t-button shape="circle" variant="outline" ghost>
+              <template #icon><t-icon name="logo-github" /></template>
+            </t-button>
+          </a>
+          <a href="https://about.me/aboutKKK" target="_blank" title="aboutKKK">
+            <t-button shape="circle" variant="outline" ghost>
+              <template #icon><t-icon name="info-circle" /></template>
+            </t-button>
+          </a>
+          <a href="mailto:1963109104@qq.com" target="_blank" title="1963109104@qq.com">
+            <t-button shape="circle" variant="outline" ghost>
+              <template #icon><t-icon name="mail" /></template>
+            </t-button>
+          </a>
         </div>
       </div>
     </div>
@@ -138,6 +145,12 @@ header {
       display: flex;
       align-items: center;
       gap: 1em;
+
+      a {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
     }
 
     span {

@@ -173,6 +173,7 @@ const copyCode = async (block: HTMLElement) => {
       word-break: break-word;
       padding: 2px 4px;
       background-color: #f6f8fa;
+      color: #333333;
       border-radius: 3px;
       font-size: 0.9em;
     }
@@ -240,14 +241,12 @@ const copyCode = async (block: HTMLElement) => {
   }
 }
 
-// // 全局响应式修复
-// :deep(*) {
-//   max-width: 100%;
-//   box-sizing: border-box;
-// }
-
 // 防止任何元素超出容器
 :deep(pre, code, img, table, div) {
   max-width: 100%;
+}
+
+:deep(a) {
+  color: #007bff;
 }
 </style>

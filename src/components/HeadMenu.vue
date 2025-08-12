@@ -15,8 +15,7 @@
       </div>
     </div>
     <div class="style">
-      <t-switch size="large" :label="['日', '夜']" :checked="pageThemeStore.pageTheme === ''"
-        @change="pageThemeStore.toggleTheme"></t-switch>
+      <t-switch size="large" :label="['夜', '日']" @change="handleChange" v-model="switchValue"></t-switch>
     </div>
     <div class="hubMenu">
       <t-button theme="default" variant="text" @click="showMenu">
@@ -46,7 +45,7 @@
 
 <script lang="ts" setup>
 import UserInfo from './UserInfo.vue'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { usePageThemeStore } from '@/stores/pageTheme'
 import { onMounted } from 'vue'
@@ -57,6 +56,22 @@ const pageThemeStore = usePageThemeStore()
 onMounted(() => {
   document.documentElement.setAttribute('theme-mode', pageThemeStore.pageTheme)
 })
+
+// 计算属性：关联开关状态与主题（空字符串→关闭，'dark'→打开）
+const switchValue = computed({
+  get() {
+    return pageThemeStore.pageTheme === 'dark'
+  },
+  set(val) { // 补充set方法，与handleChange逻辑一致
+    pageThemeStore.pageTheme = val ? 'dark' : ''
+    document.documentElement.setAttribute('theme-mode', pageThemeStore.pageTheme)
+  }
+})
+
+// handleChange
+const handleChange = (isDark: boolean) => {
+  switchValue.value = isDark // 直接通过set方法更新
+}
 
 const router = useRouter()
 const route = useRoute()
