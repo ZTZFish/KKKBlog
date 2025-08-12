@@ -1,0 +1,1 @@
+import{E as e}from"./EmptyState--ir2T_pc.js";import{d as o,a as t,e as a,g as s,_ as m}from"./index-UTA6jkVN.js";import"./index-IwgWiUsY.js";import"./render-fn-CWOtDoMp.js";const r={class:"empty"},_=o({__name:"LifeCommonView",setup(c){return(n,p)=>(s(),t("div",r,[a(e)]))}}),u=m(_,[["__scopeId","data-v-eeb3bb40"]]);export{u as default};

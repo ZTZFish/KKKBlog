@@ -1,0 +1,128 @@
+const n=`# 插槽
+
+## 插槽的核心作用
+
+1. **内容分发**：父组件可以将任意内容（HTML/组件）插入子组件指定位置
+2. **结构定制**：允许子组件定义可扩展的模板结构
+3. **作用域控制**：作用域插槽实现子向父的数据传递
+
+## 一、匿名插槽（父→子）
+
+\`\`\`html
+<!-- 子组件 ChildComponent.vue -->
+<template>
+  <div class="container">
+    <slot>默认内容（可选）</slot>
+  </div>
+</template>
+
+<!-- 父组件使用 -->
+<ChildComponent>
+  <p>这里的内容会替换默认插槽</p>
+</ChildComponent>
+\`\`\`
+
+**父组件中插入的子组件标签之间的内容会被插入到子组件的slot标签中**
+
+## 二、具名插槽（父→子）
+
+\`\`\`html
+<!-- 子组件 -->
+<template>
+  <div>
+    <header>
+      <slot name="header"></slot>
+    </header>
+    <main>
+      <slot></slot>
+      <!-- 默认插槽 -->
+    </main>
+  </div>
+</template>
+
+<!-- 父组件使用 -->
+<ChildComponent>
+  <template v-slot:header>
+    <h1>自定义头部</h1>
+  </template>
+
+  <p>主内容区</p>
+</ChildComponent>
+\`\`\`
+
+**子组件**中slot标签中用：**name=”插槽名称“**
+
+\`\`\`html
+<slot name="header"></slot>
+\`\`\`
+
+**父组件**中用template标签中用：**v-slot：插槽名称（没有双引号）或 #插槽名称**，标签内部包裹插槽要显示的内容
+
+\`\`\`html
+<template v-slot:header>
+  <h1>自定义头部</h1>
+</template>
+\`\`\`
+
+## 三、作用域插槽（子→父）
+
+\`\`\`html
+<!-- 子组件 -->
+<template>
+  <ul>
+    <li v-for="(item, index) in items" :key="index">
+      <slot :item="item" :index="index"></slot>
+    </li>
+  </ul>
+</template>
+
+<!-- 父组件使用 -->
+<ChildComponent>
+  <template v-slot:default="slotProps">
+    <span>{{ slotProps.item }} - {{ slotProps.index }}</span>
+  </template>
+</ChildComponent>
+\`\`\`
+
+作用域插槽是带有数据的插槽，**子组件提供一部分数据给插槽，父组件接收子组件的数据进行页面渲染。**
+
+子组件中定义数据：
+
+\`\`\`html
+<slot :item="item" :index="index"></slot>
+\`\`\`
+
+父组件中接收数据：
+
+一、默认插槽：
+
+**默认插槽传递的数据必须显式default接收**
+
+v-slot=“形参名称（可自定义）”
+
+\`\`\`html
+<template v-slot:default="形参（自定义名称）"></template>
+或
+<template v-slot:default="{item}"></template> //解构赋值
+\`\`\`
+
+二、具名插槽
+
+**#插槽名称 = “形参”**
+
+\`\`\`html
+<tempalte #插槽名称="形参"></tempalte>
+\`\`\`
+
+## 典型使用场景
+
+1. **布局组件**：PageLayout 组件包含 header/main/footer 插槽
+2. **UI 组件库**：Table 组件通过作用域插槽暴露行数据
+3. **高阶组件**：封装通用逻辑，通过插槽注入不同UI
+4. **内容容器**：Card 组件包含 title/content 插槽
+5. **列表渲染**：自定义每项的渲染方式
+
+## **插槽的原理**
+
+视频链接：[插槽的本质【渡一教育】\\_哔哩哔哩\\_bilibili](https://www.bilibili.com/video/BV1LdjAz8EKE/?spm_id_from=333.337.search-card.all.click&vd_source=e10990f910e1a90a8e43d1322163a874)
+`;export{n as default};

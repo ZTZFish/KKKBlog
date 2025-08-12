@@ -1,0 +1,1 @@
+import{E as e}from"./EmptyState--ir2T_pc.js";import{d as o,a as t,e as s,g as a,_ as c}from"./index-UTA6jkVN.js";import"./index-IwgWiUsY.js";import"./render-fn-CWOtDoMp.js";const m={class:"empty"},r=o({__name:"MusicCommonView",setup(_){return(n,p)=>(a(),t("div",m,[s(e)]))}}),l=c(r,[["__scopeId","data-v-c0907f0d"]]);export{l as default};
