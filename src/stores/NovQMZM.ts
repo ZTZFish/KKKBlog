@@ -1,11 +1,14 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import QMZMImage from '../assets/images/NovPost/QMZM.png'
-// 获取完整的基础路径，包含 public
+// 根据环境动态生成基础路径
 const getBasePath = () => {
   const baseUrl = import.meta.env.BASE_URL || '/'
-  console.log('baseUrl', baseUrl)
-  return `${baseUrl}public/` // 显式添加 public 路径
+  // 检查是否是开发环境
+  const isDevelopment = import.meta.env.DEV
+
+  // 开发环境包含public，生产环境不包含
+  return isDevelopment ? `${baseUrl}public/` : baseUrl
 }
 export const useQMZMStore = defineStore('QMZM', () => {
   const qmzm = ref({
