@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 // 定义允许的标签类型
-type EssayTag = 'Vue' | 'HTML' | 'CSS' | 'JS' | string;
+type EssayTag = 'Vue' | 'HTML' | 'CSS' | 'JavaScript' | string;
 
 const props = defineProps({
   essay: {
@@ -19,7 +19,7 @@ const tagColor = computed(() => {
     'Vue': '#2ba471',
     'HTML': '#366ef4',
     'CSS': '#e37318',
-    'JS': '#f5ba18',
+    'JavaScript': '#f5ba18',
   }
 
   // 使用类型断言确保安全

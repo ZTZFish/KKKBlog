@@ -46,6 +46,14 @@ export const essayDataStore = defineStore('essayData', () => {
       content: '本文主要介绍CSS中的过渡效果，包括过渡属性、过渡时间、过渡函数等。',
       time: '2025-7-30',
     },
+    {
+      id: 6,
+      title: '事件循环',
+      tags: ['JavaScript'],
+      bgc: images.value[5].url,
+      content: '本文主要介绍JavaScript中的事件循环，包括宏任务、微任务、任务队列等。',
+      time: '2025-8-31',
+    },
   ])
   return { essays }
 })

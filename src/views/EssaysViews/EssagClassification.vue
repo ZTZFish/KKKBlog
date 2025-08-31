@@ -25,6 +25,9 @@ const showEssays = (tag: string) => {
       <div class="Vue" @click="showEssays('Vue')">
         <img src="../../assets/images/essayClassification/VUE.png" alt="">
       </div>
+      <div class="Vue" @click="showEssays('JavaScript')">
+        <img src="../../assets/images/essayClassification/JavaScript.png" alt="">
+      </div>
     </div>
   </div>
   <div class="essays" v-if="isShowEssays && essayList.length > 0">
