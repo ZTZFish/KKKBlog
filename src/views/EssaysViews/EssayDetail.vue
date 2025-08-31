@@ -34,7 +34,7 @@ watchEffect(async () => {
   if (route.path.startsWith('/essayDetail/')) {
     try {
       const { default: markdown } = await import(
-        `../../../public/essays/${route.params.essayTitle}.md?raw`
+        `@/essays/${route.params.essayTitle}.md?raw`
       );
       mdContent.value = md.render(markdown);
 
