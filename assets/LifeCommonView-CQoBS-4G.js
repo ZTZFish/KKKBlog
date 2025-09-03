@@ -1,0 +1,1 @@
+import{E as e}from"./EmptyState-Mh5Tw_HI.js";import{d as o,a as t,b as a,f as s,_ as m}from"./index-es9QLVd9.js";import"./index-CMbH7iHS.js";import"./render-fn-l-FAhAY_.js";const r={class:"empty"},_=o({__name:"LifeCommonView",setup(c){return(n,p)=>(a(),t("div",r,[s(e)]))}}),b=m(_,[["__scopeId","data-v-eeb3bb40"]]);export{b as default};
