@@ -1,13 +1,14 @@
 <script lang="ts" setup>
 import ViewsContainer from '../ViewsContainer.vue'
 import ChangeAnimation from '../../components/AnimatiionCompo/ChangeAnimation.vue'
-import { ref, watchEffect, nextTick } from 'vue';
+import { ref, watchEffect, nextTick, provide } from 'vue';
 import { useRoute } from 'vue-router';
 import MarkdownIt from 'markdown-it';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/atom-one-dark.css';
 import GiscusComments from '../../components/EssayCompo/GiscusComments.vue'
 import { pageviewCount } from '@waline/client';
+
 
 
 pageviewCount({
@@ -18,7 +19,11 @@ pageviewCount({
 
 const route = useRoute();
 const mdContent = ref('');
+const isDOM = ref(false);
+const mdContentDOMs = ref<HTMLElement | null>(null);
 
+provide('mdContentDOMs', mdContentDOMs);
+provide('isDOM', isDOM);
 const md: MarkdownIt = MarkdownIt({
   html: true,
   highlight: (str: string, lang: string) => {
@@ -33,13 +38,15 @@ const md: MarkdownIt = MarkdownIt({
 watchEffect(async () => {
   if (route.path.startsWith('/essayDetail/')) {
     try {
+      isDOM.value = false; // 重置状态
       const { default: markdown } = await import(
         `@/essays/${route.params.essayTitle}.md?raw`
       );
       mdContent.value = md.render(markdown);
-
       nextTick(() => {
         addCopyButtons();
+        console.log('DOMs渲染完毕', mdContentDOMs.value);
+        isDOM.value = true;
       });
     } catch (err) {
       console.error('Failed to load markdown:', err);
@@ -105,14 +112,15 @@ const copyCode = async (block: HTMLElement) => {
     }
   }
 }
+
 </script>
 
 <template>
   <div>
-    <ChangeAnimation />
+    <ChangeAnimation/>
     <ViewsContainer>
       <template #main>
-        <div class="markdown-body" v-html="mdContent" />
+        <div class="markdown-body" v-html="mdContent" ref = "mdContentDOMs"/>
         <div class="pageview-section">
           本文阅读量：<span class="waline-pageview-count" />
         </div>

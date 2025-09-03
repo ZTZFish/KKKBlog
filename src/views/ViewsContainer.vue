@@ -2,16 +2,25 @@
 import UserInfo from '@/components/UserInfo.vue'
 import HeadMenu from '@/components/HeadMenu.vue'
 import TopPage from '@/components/TopPage.vue';
+import EssayAnchor from '@/components/EssayCompo/EssayAnchor.vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+
+
+
 </script>
 
 <template>
   <HeadMenu />
+  <div class="placeholder"></div>
   <div class="view">
     <main class="main">
       <slot name="main"></slot>
     </main>
     <div class="user" ref="user">
-      <UserInfo />
+      <UserInfo v-if="route.name !== 'essayDetail'" />
+      <EssayAnchor v-else />
     </div>
     <div class="handle">
       <TopPage />
@@ -33,6 +42,11 @@ body {
   overflow-x: hidden; // 防止水平滚动
 }
 
+.placeholder {
+  height: 56px; // 占位符高度，确保内容不被头部遮挡
+  width: 100%;
+}
+
 .view {
   position: relative;
   display: grid;
@@ -40,7 +54,6 @@ body {
   grid-template-columns: 1fr 7fr 3fr;
   background-color: var(--color-body-bg);
   min-height: 100vh;
-  margin-top: 56px;
   width: 100%;
   max-width: 100vw; // 确保不超过视口宽度
   overflow-x: hidden;

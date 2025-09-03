@@ -129,9 +129,9 @@ const props = defineProps({
 
 孙子在调用传递过来的方法时，实际上就是在调用祖先组件定义的那个函数，函数体里的逻辑会在祖先组件的作用域下执行。
 
-### 四、全局状态管理工具，Pinia（以及VueX）
+## 四、全局状态管理工具，Pinia（以及VueX）
 
-#### 1.创建store文件夹，以及文件夹下的index.js文件
+### 1.创建store文件夹，以及文件夹下的index.js文件
 
 index.js:
 
@@ -159,7 +159,7 @@ export const use***Store = defineStore('storeId',() => {
 
 defineStore() 的第二个参数可接受两类值：**Setup(组合式API) 函数**或 **Option (分布式API)对象**
 
-#### 2.在main.js中导入和挂载
+### 2.在main.js中导入和挂载
 
 导入：
 
@@ -175,7 +175,7 @@ const pinia = createPinia()
 app.use(pinia)
 ```
 
-#### 3.在文件中使用
+### 3.在文件中使用
 
 ```html
 <template>
@@ -194,6 +194,6 @@ app.use(pinia)
 </script>
 ```
 
-### 补充 defineExpose
+## 补充 defineExpose
 
 defineExpose 是 Vue 3 中setup语法中的一个专用 API，用于 向父组件暴露子组件内部的属性或方法 。
